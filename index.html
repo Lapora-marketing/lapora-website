@@ -4284,7 +4284,23 @@ function applyPersonalization(p){
     }
     var reto = sel.challenge||"pacientes";
     var retoText = CHALLENGES[reto]||"crecer digitalmente";
-    var waMsg = encodeURIComponent("Hola Lapora, hice el diagn\u00f3stico. Soy "+prof.label+" en "+city+". Mi mayor problema es "+retoText+" y estoy perdiendo aprox. "+fmtCOP(loss)+"/mes. Quiero hablar con ustedes.");
+    // Mapeo legible para el contexto enviado a SofIA
+    var VOLUME_LABELS = {"0-5":"0 a 5 pacientes/mes","6-15":"6 a 15 pacientes/mes","16-30":"16 a 30 pacientes/mes","30+":"M\u00e1s de 30 pacientes/mes"};
+    var PRESENCIA_LABELS = {"bien":"Aparezco bien en Google","competencia":"Aparece la competencia antes que yo","sin-presencia":"No tengo presencia digital","no-se":"No s\u00e9 c\u00f3mo lo ven en Google"};
+    var volLabel = VOLUME_LABELS[sel.volume]||"No especificado";
+    var presLabel = PRESENCIA_LABELS[sel.presencia]||"No especificado";
+    // Mensaje rico en contexto para que SofIA atienda con todo el detalle
+    var waMsg = encodeURIComponent(
+      "Hola Lapora, complet\u00e9 el diagn\u00f3stico digital. Estos son mis datos:\n\n"+
+      "\ud83d\udccb MI PERFIL:\n"+
+      "\u2022 Especialidad: "+prof.label+"\n"+
+      "\u2022 Ciudad: "+city+"\n"+
+      "\u2022 Pacientes nuevos: "+volLabel+"\n"+
+      "\u2022 Presencia digital: "+presLabel+"\n"+
+      "\u2022 Mayor reto: "+retoText+"\n\n"+
+      "\ud83d\udcb0 P\u00e9rdida estimada: "+fmtCOP(loss)+"/mes en pacientes que van a la competencia.\n\n"+
+      "Quiero conversar sobre c\u00f3mo recuperar estos ingresos."
+    );
     if(waBtn) waBtn.href = "https://wa.me/573228783019?text="+waMsg;
     var profile = { specialty:sp, challenge:reto, city:city };
     userProfile = profile;
