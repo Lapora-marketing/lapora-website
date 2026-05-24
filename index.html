@@ -4194,12 +4194,12 @@ function applyPersonalization(p){
     "no-se": "<strong style=\"color:#FCD34D\">Lo que no mide, no puede mejorar.</strong> No saber c\u00f3mo lo ven en Google es como operar sin resultados de laboratorio."
   };
   var LOSS_ESTIMATES = {
-    odontologia:  { base: 8000000,  mul: 2.2 },
-    medicina:     { base: 6000000,  mul: 2.0 },
-    especialista: { base: 14000000, mul: 2.5 },
-    estetica:     { base: 12000000, mul: 2.8 },
-    psicologia:   { base: 5000000,  mul: 1.8 },
-    otra:         { base: 7000000,  mul: 2.0 }
+    odontologia:  { base: 20000000, mul: 2.2 },
+    medicina:     { base: 15000000, mul: 2.0 },
+    especialista: { base: 35000000, mul: 2.5 },
+    estetica:     { base: 30000000, mul: 2.8 },
+    psicologia:   { base: 12500000, mul: 1.8 },
+    otra:         { base: 17500000, mul: 2.0 }
   };
   function calcLoss(sp, vs, ps) {
     var est = LOSS_ESTIMATES[sp] || LOSS_ESTIMATES.otra;
