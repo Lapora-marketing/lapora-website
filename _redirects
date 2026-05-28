@@ -1,0 +1,19 @@
+# ════════════════════════════════════════════════════════════
+# NETLIFY REDIRECTS — Lapora.studio
+# ════════════════════════════════════════════════════════════
+
+# Proxy del SaaS Lapora Clinic (corre en Railway/FastAPI)
+# El usuario ve lapora.studio/clinic/* pero el contenido viene de Railway
+/clinic/*                https://sofia-lapora-production.up.railway.app/clinic/:splat   200
+/admin/*                 https://sofia-lapora-production.up.railway.app/admin/:splat    200
+/webhook/*               https://sofia-lapora-production.up.railway.app/webhook/:splat  200
+
+# Atajos amigables
+/app/*                   https://sofia-lapora-production.up.railway.app/clinic/app/:splat  200
+/registro                https://sofia-lapora-production.up.railway.app/clinic/registro    302
+/login                   https://sofia-lapora-production.up.railway.app/clinic/login       302
+/software                https://sofia-lapora-production.up.railway.app/clinic/landing     302
+/pricing                 /#clinic                                                            302
+
+# Fallback 404 al index (SPA-like)
+/*                       /index.html                                                        200
