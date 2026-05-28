@@ -12,7 +12,7 @@
 /app/*                   https://sofia-lapora-production.up.railway.app/clinic/app/:splat  200
 /registro                https://sofia-lapora-production.up.railway.app/clinic/registro    302
 /login                   https://sofia-lapora-production.up.railway.app/clinic/login       302
-/software                https://sofia-lapora-production.up.railway.app/clinic/landing     302
+/software                /clinic/landing                                                     302
 /pricing                 /#clinic                                                            302
 
 # Fallback 404 al index (SPA-like)
